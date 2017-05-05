@@ -27,7 +27,12 @@ function mostrarMiembros(){
 	miembros.push(amala);
 	miembros.push(paula);
 	miembros.push(mariela);
+
+	console.log(miembros);
+	
+	//mostrar miembros del squad en <div>
+	var mostrar = miembros.forEach(function(element){
+		document.getElementById('contenedor').innerHTML += "<b>Nombre: </b>" + element.nombre + " " + element.apellido + "<br><b>Edad: </b>" + element.edad + "<br><b>Hobbies:</b>" + "<ul><li>" + element.hobbies[0] + "</li><li>" + element.hobbies[1] + "</li><li>" + element.hobbies[2] + "</li></ul>";
+	})
 }
 mostrarMiembros();
-
-document.getElementById('cont-7').innerHTML = paula.nombre;
