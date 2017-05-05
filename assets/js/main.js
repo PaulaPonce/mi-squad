@@ -1,3 +1,5 @@
+var miembros = []; //arreglo para guardar los miembros del squad
+
 function MiembroSquad(nombre, apellido, edad, hobbies){
 	this.nombre = nombre;
 	this.apellido = apellido;
@@ -5,9 +7,8 @@ function MiembroSquad(nombre, apellido, edad, hobbies){
 	this.hobbies = hobbies
 }
 
-function mostrarMiembros(){
-	var miembros = []; //arreglo para guardar los miembros del squad
 
+function principal(){
 	//instancia para cada miembro
 	var marcela = new MiembroSquad("Marcela", "Cabello", 31, ["Cantar", "Yoga", "Cocinar"]);
 	var melissa = new MiembroSquad("Melissa", "Pacheco", 25, ["Dormir", "Comer", "Matilda"]);
@@ -29,26 +30,18 @@ function mostrarMiembros(){
 	miembros.push(mariela);
 
 	console.log(miembros);
-	
-	//mostrar miembros del squad en <div>
-	var contenedor = document.getElementById('contenedor');
 
-	var mostrar = miembros.forEach(function(element){
-		contenedor.innerHTML += "<b>Nombre: </b>" + element.nombre + " " + element.apellido + "<br><b>Edad: </b>" + element.edad + "<br><b>Hobbies:</b><br>" + "<ul><li>" + element.hobbies[0] + "</li><li>" + element.hobbies[1] + "</li><li>" + element.hobbies[2] + "</li></ul>";
-	})
-	
-	/*
-	miembros.forEach(function(element){
-		contenedor.innerHTML += "<b>Nombre: </b>" + element.nombre + " " + element.apellido + "<br><b>Edad: </b>" + element.edad + "<br><b>Hobbies:</b><br>";
-		var lista = "<ul>" + element.hobbies.forEach(function(h){
-			contenedor.innerHTML += "<li>" + h + "</li>"}) + "</ul>";
-	}
-	*/
+	llenarDiv("contenedor", miembros);
 }
-mostrarMiembros();
 
-function Comentario(id, comentario, likes){
-	this.id = id;
-	this.comentario = comentario;
-	this.likes = likes
+//crear div en html
+function llenarDiv(idDiv, arraySquad){
+	var div = document.getElementById(idDiv);
+	var textAux;
+	arraySquad.forEach(function(elemento){
+		textAux = document.createElement("div");
+		textAux.innerHTML += "<b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>" + "<ul><li>" + elemento.hobbies[0] + "</li><li>" + elemento.hobbies[1] + "</li><li>" + elemento.hobbies[2] + "</li></ul>";
+		div.appendChild(textAux);
+	});
 }
+principal();
