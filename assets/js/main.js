@@ -58,10 +58,14 @@ function llenarDiv(idDiv, arraySquad){
 
 	var textAux; 
 	var cajaAux;
+
 	arraySquad.forEach(function(elemento){
 		textAux = document.createElement("div");
 		//cajaAux = document.createElement("textarea");
-		textAux.innerHTML += "<b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>" + "<ul><li>" + elemento.hobbies[0] + "</li><li>" + elemento.hobbies[1] + "</li><li>" + elemento.hobbies[2] + "</li></ul>" + "<textarea></textarea>";
+		textAux.innerHTML += "<br><b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>";//+ "<ul><li>" + elemento.hobbies[0] + "</li><li>" + elemento.hobbies[1] + "</li><li>" + elemento.hobbies[2] + "</li></ul>" + "<textarea></textarea>";
+		var lista = "<ul>" + elemento.hobbies.forEach(function(h){
+			return(textAux.innerHTML += "<li>" + h + "</li>");}) + "</ul>";
+		textAux.innerHTML += "<textarea></textarea>";
 		//cajaAux.innerHTML;
 		div.appendChild(textAux);
 		//textAux.appendchild(cajaAux);
