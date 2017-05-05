@@ -31,8 +31,24 @@ function mostrarMiembros(){
 	console.log(miembros);
 	
 	//mostrar miembros del squad en <div>
+	var contenedor = document.getElementById('contenedor');
+
 	var mostrar = miembros.forEach(function(element){
-		document.getElementById('contenedor').innerHTML += "<b>Nombre: </b>" + element.nombre + " " + element.apellido + "<br><b>Edad: </b>" + element.edad + "<br><b>Hobbies:</b>" + "<ul><li>" + element.hobbies[0] + "</li><li>" + element.hobbies[1] + "</li><li>" + element.hobbies[2] + "</li></ul>";
+		contenedor.innerHTML += "<b>Nombre: </b>" + element.nombre + " " + element.apellido + "<br><b>Edad: </b>" + element.edad + "<br><b>Hobbies:</b><br>" + "<ul><li>" + element.hobbies[0] + "</li><li>" + element.hobbies[1] + "</li><li>" + element.hobbies[2] + "</li></ul>";
 	})
+	
+	/*
+	miembros.forEach(function(element){
+		contenedor.innerHTML += "<b>Nombre: </b>" + element.nombre + " " + element.apellido + "<br><b>Edad: </b>" + element.edad + "<br><b>Hobbies:</b><br>";
+		var lista = "<ul>" + element.hobbies.forEach(function(h){
+			contenedor.innerHTML += "<li>" + h + "</li>"}) + "</ul>";
+	}
+	*/
 }
 mostrarMiembros();
+
+function Comentario(id, comentario, likes){
+	this.id = id;
+	this.comentario = comentario;
+	this.likes = likes
+}
