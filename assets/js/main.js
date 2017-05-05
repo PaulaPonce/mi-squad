@@ -14,4 +14,6 @@ var amala = new MiembroSquad("Valentina Amala", "Kamala", 29, ["Bordar", "Tejer"
 var paula = new MiembroSquad("Paula", "Ponce", 28, ["Música", "Aves", "Heroes of the Storm"]);
 var mariela = new MiembroSquad("Mariela", "Cubillos", 36, ["Tejer", "Comer chocolate", "Cocinar"]);
 
+var miembros = 
+document.getElementById('cont-7').innerHTML = paula.nombre;
 //hobbie1, hobbie2, hobbie3
