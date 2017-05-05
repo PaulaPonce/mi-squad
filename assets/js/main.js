@@ -7,6 +7,11 @@ function MiembroSquad(nombre, apellido, edad, hobbies){
 	this.hobbies = hobbies
 }
 
+function Comentario(id_miembro, comentario, likes){
+	this.id_miembro = id_miembro;
+	this.comentario = comentario;
+	this.likes = likes
+}
 
 function principal(){
 	//instancia para cada miembro
@@ -34,14 +39,33 @@ function principal(){
 	llenarDiv("contenedor", miembros);
 }
 
+/*
+var cont = document.getElementById("contenedor");
+var textAux, cajaAux;
+
+miembros.forEach(function(el){
+	textAux = document.createElement("div");
+	cajaAux = document.createElement("textarea");
+	textAux.innerHTML += "<b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>" + "<ul><li>" + elemento.hobbies[0] + "</li><li>" + elemento.hobbies[1] + "</li><li>" + elemento.hobbies[2] + "</li></ul>";
+	cont.appendChild(textAux);
+	cont.appendchild(cajaAux);
+})
+*/
+
 //crear div en html
 function llenarDiv(idDiv, arraySquad){
 	var div = document.getElementById(idDiv);
-	var textAux;
+
+	var textAux; 
+	var cajaAux;
 	arraySquad.forEach(function(elemento){
 		textAux = document.createElement("div");
-		textAux.innerHTML += "<b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>" + "<ul><li>" + elemento.hobbies[0] + "</li><li>" + elemento.hobbies[1] + "</li><li>" + elemento.hobbies[2] + "</li></ul>";
+		//cajaAux = document.createElement("textarea");
+		textAux.innerHTML += "<b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>" + "<ul><li>" + elemento.hobbies[0] + "</li><li>" + elemento.hobbies[1] + "</li><li>" + elemento.hobbies[2] + "</li></ul>" + "<textarea></textarea>";
+		//cajaAux.innerHTML;
 		div.appendChild(textAux);
+		//textAux.appendchild(cajaAux);
 	});
 }
 principal();
+//set atributte
