@@ -36,40 +36,40 @@ function principal(){
 
 	console.log(miembros);
 
-	llenarDiv("contenedor", miembros);
+	llenarDiv('contenedor', miembros);
 }
 
-/*
-var cont = document.getElementById("contenedor");
-var textAux, cajaAux;
-
-miembros.forEach(function(el){
-	textAux = document.createElement("div");
-	cajaAux = document.createElement("textarea");
-	textAux.innerHTML += "<b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>" + "<ul><li>" + elemento.hobbies[0] + "</li><li>" + elemento.hobbies[1] + "</li><li>" + elemento.hobbies[2] + "</li></ul>";
-	cont.appendChild(textAux);
-	cont.appendchild(cajaAux);
-})
-*/
-
-//crear div en html
-function llenarDiv(idDiv, arraySquad){
-	var div = document.getElementById(idDiv);
-
-	var textAux; 
-	var cajaAux;
+//crear div en <section id="contenedor"></section> del html
+function llenarDiv(idDiv, arraySquad){ //idDiv-->id='contendor' //arraySquad-->miembros[]
+	var div = document.getElementById(idDiv); //<section id="contenedor"></section>
+	
+	var divAux; //sección: <div>
+	var cajaAux; //área de texto: <textarea>
+	var botonAux; //botón: <button>
+	var botonLike; //botón para dar like a comentarios: <button>
 
 	arraySquad.forEach(function(elemento){
-		textAux = document.createElement("div");
-		//cajaAux = document.createElement("textarea");
-		textAux.innerHTML += "<br><b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>";//+ "<ul><li>" + elemento.hobbies[0] + "</li><li>" + elemento.hobbies[1] + "</li><li>" + elemento.hobbies[2] + "</li></ul>" + "<textarea></textarea>";
-		var lista = "<ul>" + elemento.hobbies.forEach(function(h){
-			return(textAux.innerHTML += "<li>" + h + "</li>");}) + "</ul>";
-		textAux.innerHTML += "<textarea></textarea>";
-		//cajaAux.innerHTML;
-		div.appendChild(textAux);
-		//textAux.appendchild(cajaAux);
+		divAux = document.createElement('div'); //crea nodo <div>
+		cajaAux = document.createElement('textarea'); //crea área de texto <textarea>
+		botonAux = document.createElement('button'); //crea botón <button>
+		botonLike = document.createElement('input'); //crea input <input>, botón con imagen
+		botonLike.src = "assets/img/red-heart.png";
+		botonLike.type = "image";
+		
+		//contenido del <div>
+		divAux.innerHTML += "<br><b>Nombre: </b>" + elemento.nombre + " " + elemento.apellido + "<br><b>Edad: </b>" + elemento.edad + "<br><b>Hobbies:</b><br>";
+		var listaHobbie = "<ul>" + elemento.hobbies.forEach(function(h){
+			return(divAux.innerHTML += "<li>" + h + "</li>");}) + "</ul>";
+		
+		div.appendChild(divAux); //enlaza <div> a <section>
+		divAux.appendChild(cajaAux); //enlaza <textarea> a <div>
+		divAux.appendChild(botonAux); //enlaza <button> a <div>
+		//botonAux.setAttribute(name, value);
+		botonAux.innerHTML = "Añadir Comentario"; //contenido del botón
+		divAux.appendChild(botonLike); //enlaza <input> a <div>
+		botonLike.setAttribute("width", "20");
+		botonLike.setAttribute("heigth", "20");
+
 	});
 }
 principal();
-//set atributte
