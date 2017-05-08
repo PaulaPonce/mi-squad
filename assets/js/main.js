@@ -45,7 +45,7 @@ function principal(){
 function llenarDiv(idDiv, arraySquad){ //idDiv-->id='contendor' //arraySquad-->miembros[]
 	var div = document.getElementById(idDiv); //<section id="contenedor"></section>
 	
-	var divAux, divAux2; //sección: <div>
+	var divAux, divAux2, divTxt; //sección: <div>
 	var imgAux; //imagen: <img>
 	var cajaAux; //área de texto: <textarea>
 	var botonAux; //botón: <button>
@@ -81,7 +81,7 @@ function llenarDiv(idDiv, arraySquad){ //idDiv-->id='contendor' //arraySquad-->m
 		botonAux.setAttribute('onclick', 'anadirComentario(this.cajaAux, this,' + elemento.id + ', this.divTxt)'); //función del botón
 		botonAux.innerHTML = "Añadir Comentario"; //contenido del botón		
 
-		var divTxt = document.createElement('div'); //crea nodo <div> para comentarios
+		divTxt = document.createElement('div'); //crea nodo <div> para comentarios
 		divTxt.setAttribute('id', elemento.id);
 		divTxt.setAttribute('class', 'comentarios');
 		divAux2.appendChild(divTxt);
@@ -90,11 +90,17 @@ function llenarDiv(idDiv, arraySquad){ //idDiv-->id='contendor' //arraySquad-->m
 		botonLike.src = "assets/img/red-heart.png";
 		botonLike.type = "image";
 		divAux.appendChild(botonLike); //enlaza <input> a <div>
+		botonLike.setAttribute('id', comentarios.length + 1);
+		botonLike.setAttribute('onClick', 'contadorLikes("' + elNum + '")');
 		botonLike.setAttribute('width', '20');
 		botonLike.setAttribute('heigth', '20');
+
+		var cajaLike = document.createElement('div');
+		cajaLike.setAttribute('id', comentarios.length + 1);
 	});
 }
 
+//función para añadir comentarios con el botón
 function anadirComentario(cajaAux, botonAux, elId, divTxt){
 	cajaAux = document.getElementById(elId).value;
 	divTxt = document.getElementsByClassName('comentarios');
@@ -105,7 +111,7 @@ function anadirComentario(cajaAux, botonAux, elId, divTxt){
 
 	var com = document.createElement('div');
 	com.setAttribute('id', elId);
-	com.innerHTML = "~ " + document.getElementById(elId).value;
+	com.innerHTML = document.getElementById(elId).value;
 
 	if(filtro[0].id == elId && cajaAux != ""){
 		comentarios.push(com);
@@ -113,4 +119,23 @@ function anadirComentario(cajaAux, botonAux, elId, divTxt){
 		document.getElementById(elId).value = "";
 	}
 }
+
+var elNum = 0; //contador de likes
+
+//esto no funcionó
+function contadorLikes(elNum, elId){
+	var contador = document.createElement('a');
+	contador.innerHTML += " ";
+
+	var numEdit = document.createTextNode(elNum);
+	contador.appendChild(numEdit);
+	contador.setAttribute('type', 'number');
+	contador.setAttribute('class', 'contador');
+	contador.setAttribute('id', 'num');
+
+	var cajaLike = document.createElement('div');
+	cajaLike.setAttribute('class', 'cont-like');
+	cajaLike.setAttribute('id', comentarios.length + 1);
+}
 principal();
+
